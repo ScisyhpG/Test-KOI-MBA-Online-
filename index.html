@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Best Practices -->
+    <title>Online MBA | King's Own Institute (KOI) | Career Advancement for Professionals</title>
+    <meta name="description" content="Accelerate your career with KOI's Online MBA. TEQSA accredited (AQF Level 9), flexible 100% online delivery, and designed for Australian working professionals." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#2d618e',
+                            dark: '#0f172a', 
+                            900: '#2d618e',
+                            800: '#234b6e',
+                            orange: '#f57238',
+                            sky: '#4ac4d0',
+                            skyLight: '#e0f7f9',
+                            brown: '#c0a480',
+                            brownLight: '#f5efe6',
+                            white: '#ffffff',
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(74, 196, 208, 0.3)',
+                        'glow-orange': '0 0 20px rgba(245, 114, 56, 0.3)',
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 3s linear infinite',
+                        'fadeUp': 'fadeUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+                        },
+                        'fadeUp': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(192, 164, 128, 0.2);
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-nav-link {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.15em;
+            color: #94a3b8; 
+            font-weight: 700;
+            font-size: 0.75rem; 
+            text-transform: uppercase;
+            padding-bottom: 4px;
+        }
+        
+        @media (min-width: 768px) {
+            .section-nav-link {
+                font-size: 0.8rem;
+                letter-spacing: 0.2em;
+            }
+        }
+
+        .section-nav-link:hover {
+            color: #2d618e; 
+        }
+
+        .section-nav-link.active {
+            color: #f57238 !important; 
+        }
+
+        .section-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: #f57238;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+            border-radius: 2px;
+            opacity: 0;
+        }
+
+        .section-nav-link.active::after {
+            width: 100%;
+            opacity: 1;
+        }
+        
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c0a480; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2d618e; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        #chat-window {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(0.8) translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #chat-window.open {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .switcher-pill {
+            transition: all 0.3s ease;
+        }
+        .switcher-pill.active {
+            background-color: #2d618e;
+            color: white;
+        }
+
+        .faq-item .faq-answer {
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.4s ease-in-out;
+            overflow: hidden;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            opacity: 1;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            background-color: #f57238; 
+            color: white;
+        }
+
+        /* Carousel Styles */
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1000ms ease-in-out, transform 8000ms ease-out;
+            transform: scale(1);
+            border-radius: 0 !important;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Timeline & Accordion Styles */
+        .timeline-container {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid #e5e7eb;
+            margin-left: 1rem;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: 0;
+            height: 50%;
+            width: 2px;
+            background: linear-gradient(to bottom, #f57238 0%, transparent 100%);
+            display: none;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            opacity: 0; 
+            transform: translateY(20px);
+            animation: fadeUp 0.5s forwards;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.6rem; 
+            top: 1.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #d1d5db;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .timeline-item:hover .timeline-dot,
+        .timeline-card.active ~ .timeline-dot {
+            border-color: #f57238;
+            background: #f57238;
+            box-shadow: 0 0 0 4px rgba(245, 114, 56, 0.2);
+        }
+
+        .timeline-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .timeline-card.hover {
+            transform: translateX(8px);
+            border-color: rgba(245, 114, 56, 0.3);
+            box-shadow: 0 10px 40px -10px rgba(45, 97, 142, 0.1);
+        }
+        .timeline-card.active {
+            border-color: #f57238;
+            background-color: #fff;
+            box-shadow: 0 15px 50px -10px rgba(245, 114, 56, 0.15);
+        }
+
+        .item-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin 0.4s ease;
+            opacity: 0;
+        }
+        .timeline-card.active .item-details {
+            max-height: 800px;
+            opacity: 1;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed #e5e7eb;
+        }
+        .timeline-card.active .chevron {
+            transform: rotate(180deg);
+            color: #f57238;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* View All Fade Effect */
+        #view-all-container {
+            position: relative;
+            z-index: 20;
+            transition: all 0.5s ease;
+        }
+        #view-all-container::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(to bottom, transparent, #F9FAFB 90%);
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+        #view-all-container.expanded::before {
+            opacity: 0;
+        }
+
+        /* Marquee Animation */
+        .marquee-mask {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .animate-marquee {
+            animation: marquee 40s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .pause-on-hover:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-brand-brownLight/20 font-sans text-brand-900 selection:bg-brand-orange selection:text-white overflow-x-hidden">
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 z-[110] hidden flex items-center justify-center bg-black/95 backdrop-blur-xl transition-opacity duration-500 opacity-0">
+        <button onclick="closeVideo()" class="absolute top-8 right-8 text-white/50 hover:text-white transition-colors group">
+            <span class="sr-only">Close</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-90 transition-transform duration-300"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="w-full max-w-6xl aspect-video bg-black rounded-none overflow-hidden shadow-2xl relative border border-white/10 mx-6">
+            <div id="video-placeholder" class="absolute inset-0 flex items-center justify-center text-white">
+                <p>Video loading...</p> 
+                <iframe id="video-frame" class="w-full h-full" src="" title="Experience KOI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Main Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-sm py-6">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="https://koi.edu.au/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 group">
+                <div id="nav-logo-bg" class="bg-brand-skyLight p-2 rounded-xl transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="nav-logo-icon" class="w-7 h-7 text-brand-900 transition-colors duration-300"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <div class="flex flex-col">
+                    <span id="nav-text-main" class="text-2xl font-serif font-bold tracking-tight leading-none text-brand-900 transition-colors duration-300">KOI</span>
+                    <span id="nav-text-sub" class="text-[10px] tracking-widest uppercase font-medium text-brand-900/60 transition-colors duration-300">King's Own Institute</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-6">
+                <a href="https://koit1sms.t1cloud.com/" target="_blank" id="nav-portal" class="text-sm font-bold uppercase tracking-widest hover:text-brand-orange transition-all flex items-center gap-2 text-brand-900">
+                    Portal <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a href="https://koi.edu.au/future-students/apply-online/" target="_blank" class="bg-brand-orange hover:bg-brand-900 text-white px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 shadow-xl hover:shadow-glow-orange hover:-translate-y-0.5">
+                    Apply Now
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-brand-900" aria-label="Toggle Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="menu-icon" class="w-7 h-7"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-2xl p-8 flex flex-col gap-4 md:hidden border-t border-gray-100">
+             <a href="https://koit1sms.t1cloud.com/" target="_blank" class="text-brand-900 font-bold py-3 flex items-center justify-between">Student Portal <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-brand-orange"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+             <a href="https://koi.edu.au/future-students/apply-online/" target="_blank" class="bg-brand-orange text-white w-full py-4 rounded-xl font-bold text-center">Apply Online</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden bg-brand-900">
+        <!-- Optimized Background Strategy -->
+        <div class="absolute inset-0 z-0 bg-brand-900">
+            <!-- Background Image: Full bleed for absolute coverage, pushed to right -->
+            <div class="absolute inset-0 h-full w-full">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80" 
+                     alt="Executive MBA Student" 
+                     class="h-full w-full object-cover object-right opacity-100">
+            </div>
+            
+            <!-- Natural Integration Overlay: 
+                 Starts solid brand-900 on the far left for text readability, 
+                 slowly fades to 0 opacity by the middle-right of the screen 
+                 to reveal the full, natural picture. No straight lines. -->
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-900 from-[0%] via-brand-900 via-[25%] to-transparent to-[70%]"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center">
+            
+            <div class="max-w-7xl w-full">
+                <!-- Institutional Identity -->
+                <div class="flex items-center gap-3 mb-8 opacity-0 animate-[fadeUp_1s_ease-out_forwards]">
+                    <div class="h-[1px] w-12 bg-brand-orange"></div>
+                    <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-brand-orange">
+                        CRICOS 03171A • PRV12012
+                    </span>
+                </div>
+
+                <!-- Academic Headline -->
+                <h1 class="text-5xl lg:text-7xl font-serif text-white leading-[1.1] mb-8 tracking-tight opacity-0 animate-[fadeUp_1s_ease-out_0.2s_forwards]">
+                    <span class="font-sans font-bold text-white block text-3xl lg:text-4xl mb-4 tracking-wider uppercase">100% Online</span>
+                    <span class="font-bold block">Master of Business</span>
+                    <span class="text-brand-sky font-light">Administration</span>
+                </h1>
+
+                <!-- Factual Description -->
+                <p class="text-lg text-gray-300 mb-10 max-w-xl leading-relaxed font-light pl-1 opacity-0 animate-[fadeUp_1s_ease-out_0.4s_forwards]">
+                    Accelerate your leadership trajectory with a TEQSA-accredited MBA designed for Australian professionals. 100% online, flexible, and outcome-focused.
+                </p>
+
+                <!-- CTAs -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 opacity-0 animate-[fadeUp_1s_ease-out_0.6s_forwards] mb-12">
+                    <a href="https://koi.edu.au/future-students/apply-online/" 
+                       target="_blank" 
+                       class="group relative px-8 py-4 overflow-hidden bg-white text-brand-900 text-xs font-bold tracking-[0.2em] uppercase transition-all hover:bg-brand-orange hover:text-white border border-transparent shadow-lg rounded-sm">
+                        <span class="relative z-10 flex items-center gap-2">
+                            Apply Now
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </a>
+                    
+                    <button onclick="openLeadForm()" class="text-white/70 hover:text-white text-xs font-medium uppercase tracking-[0.2em] transition-all flex items-center gap-3 group py-3">
+                        <span class="w-8 h-[1px] bg-white/20 group-hover:bg-brand-orange transition-colors"></span>
+                        Download MBA Brochure
+                    </button>
+                </div>
+
+                <!-- Fact Check Box / Info Bar -->
+                <div class="bg-brand-900/35 backdrop-blur-md py-6 px-10 rounded-none shadow-xl opacity-0 animate-[fadeUp_1s_ease-out_0.8s_forwards] mb-8 relative z-20 w-full border-[0.5px] border-white/15">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-6 gap-x-12 items-center">
+                        
+                        <!-- Item 1 -->
+                        <div class="flex flex-col gap-2">
+                            <div class="text-white opacity-80">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="21" x2="22" y2="21"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-sm uppercase tracking-wider mb-0.5">100% Online</p>
+                                <p class="text-gray-300 text-[11px] font-medium">Learning Mode</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="flex flex-col gap-2">
+                            <div class="text-white opacity-80">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-sm uppercase tracking-wider mb-0.5">Postgraduate</p>
+                                <p class="text-gray-300 text-[11px] font-medium">Qualification</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="flex flex-col gap-2">
+                            <div class="text-white opacity-80">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-sm uppercase tracking-wider mb-0.5">24 Months PT</p>
+                                <p class="text-gray-300 text-[11px] font-medium">Duration</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="flex flex-col gap-2">
+                            <div class="text-white opacity-80">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-sm uppercase tracking-wider mb-0.5">Mar, Jul, Nov</p>
+                                <p class="text-gray-300 text-[11px] font-medium">Start Dates</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="flex flex-col gap-2">
+                            <div class="text-white opacity-80">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-sm uppercase tracking-wider mb-0.5">12</p>
+                                <p class="text-gray-300 text-[11px] font-medium">Units</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 6 -->
+                        <div class="flex flex-col gap-2">
+                            <div class="text-white opacity-80">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-sm uppercase tracking-wider mb-0.5">$4,717*</p>
+                                <p class="text-gray-300 text-[11px] font-medium">Fee Per Unit</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Section Navigation Bar -->
+    <nav id="section-nav" class="sticky top-[76px] z-40 bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-[0_4px_30px_rgba(0,0,0,0.03)] transition-all duration-300">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-start md:justify-center items-center h-16 md:h-20 gap-8 md:gap-16 whitespace-nowrap overflow-x-auto no-scrollbar">
+                <a href="#about" class="section-nav-link">Overview</a>
+                <a href="#curriculum" class="section-nav-link">Curriculum</a>
+                <a href="#accreditation" class="section-nav-link">Recognition</a>
+                <a href="#outcomes" class="section-nav-link">Outcomes</a>
+                <a href="#entry-criteria" class="section-nav-link">Entry Criteria</a>
+                <a href="#faq" class="section-nav-link">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section (Overview) -->
+    <section id="about" class="py-28 bg-white w-full scroll-mt-32">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal-on-scroll">
+                <span class="text-brand-orange font-bold uppercase tracking-widest text-xs mb-3 block flex items-center gap-3">
+                    <span class="w-8 h-[2px] bg-brand-orange"></span> Career Advancement
+                </span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-900 mb-8 leading-tight">Built for Australian Business Leaders</h2>
+                <div class="prose prose-lg text-gray-600 mb-10 font-light leading-relaxed">
+                    <p class="mb-4">Designed for ambitious professionals seeking promotion or leadership transition. Our 100% online MBA delivers practical, applied skills you can use immediately in your role.</p>
+                    <p>Balance work, life, and study without pause. Gain the strategic edge required for executive success.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="p-6 bg-brand-skyLight/30 rounded-2xl border border-brand-sky/10">
+                        <p class="font-bold text-brand-900 text-lg mb-1">Work-Life Balance</p>
+                        <p class="text-sm text-gray-500">100% Online Delivery</p>
+                    </div>
+                    <div class="p-6 bg-brand-skyLight/30 rounded-2xl border border-brand-sky/10">
+                        <p class="font-bold text-brand-900 text-lg mb-1">Trusted Quality</p>
+                        <p class="text-sm text-gray-500">TEQSA & AQF Level 9</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Interactive Carousel Container -->
+            <div class="relative reveal-on-scroll h-[600px] w-full rounded-none overflow-hidden shadow-2xl group select-none">
+                <div id="about-carousel" class="absolute inset-0 w-full h-full bg-gray-100">
+                    <!-- Slides will be square-edged pictures -->
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-transparent to-transparent pointer-events-none"></div>
+
+                <div class="absolute bottom-8 left-8 right-8 flex justify-between items-end z-20">
+                    <div class="flex gap-3 mb-2" id="carousel-dots"></div>
+                    <div class="flex gap-4">
+                        <button onclick="prevSlide()" class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white hover:text-brand-900 text-white transition-all duration-300 group-hover:translate-y-0 translate-y-4 opacity-0 group-hover:opacity-100 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                        </button>
+                        <button onclick="nextSlide()" class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white hover:text-brand-900 text-white transition-all duration-300 group-hover:translate-y-0 translate-y-4 opacity-0 group-hover:opacity-100 delay-75 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="py-32 bg-gray-50 scroll-mt-32 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.4] bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')]"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl mx-auto text-center mb-20 reveal-on-scroll">
+                <span class="text-brand-orange font-bold tracking-[0.2em] uppercase text-xs mb-4 block flex items-center justify-center gap-3">
+                    <span class="w-8 h-[2px] bg-brand-orange"></span> Practical Learning <span class="w-8 h-[2px] bg-brand-orange"></span>
+                </span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-900 mb-6">Industry-Relevant Curriculum</h2>
+                <p class="text-gray-500 text-lg leading-relaxed">Master the skills Australian employers demand. From strategic decision-making to financial analysis, our curriculum is built for immediate application in your workplace.</p>
+            </div>
+
+            <div class="flex justify-center mb-16 reveal-on-scroll">
+                <div class="inline-flex bg-white p-2 rounded-full shadow-lg border border-gray-100">
+                    <button id="switch-core" onclick="switchProgram('core')" class="switcher-pill active px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-all shadow-md">Core Units</button>
+                    <button id="switch-why" onclick="switchProgram('why')" class="switcher-pill px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-all text-gray-500 hover:text-brand-900">Why KOI?</button>
+                </div>
+            </div>
+
+            <div id="program-content" class="reveal-on-scroll max-w-4xl mx-auto">
+                <div class="timeline-container" id="program-timeline"></div>
+                <div id="view-all-container" class="text-center mt-4 pt-10 relative">
+                    <button id="view-all-btn" onclick="toggleViewAll()" class="bg-white border border-gray-200 text-brand-900 px-8 py-3 rounded-full font-bold text-sm shadow-sm hover:shadow-md hover:border-brand-orange hover:text-brand-orange transition-all flex items-center gap-3 mx-auto z-30 relative group">
+                        <span id="view-all-text">View All Subjects</span>
+                        <svg id="view-all-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-y-1"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-20 text-center reveal-on-scroll">
+                <button onclick="openLeadForm()" class="group bg-brand-900 hover:bg-brand-orange text-white px-12 py-5 rounded-full font-bold shadow-xl transition-all duration-300 flex items-center gap-3 mx-auto">
+                    Download MBA Brochure
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-y-1 transition-transform"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accreditation Section -->
+    <section id="accreditation" class="py-32 bg-brand-white scroll-mt-32">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 reveal-on-scroll">
+                <span class="text-brand-orange text-[10px] font-black tracking-[0.3em] uppercase block mb-4 flex items-center justify-center gap-3">
+                    <span class="w-8 h-[2px] bg-brand-orange"></span> Credibility & Trust <span class="w-8 h-[2px] bg-brand-orange"></span>
+                </span>
+                <h2 class="text-5xl md:text-6xl font-serif font-bold text-brand-900 mb-8 relative inline-block">
+                    Recognised Qualification
+                    <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-1 bg-brand-brown/20 rounded-full"></div>
+                </h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-20 items-center max-w-7xl mx-auto">
+                <div class="reveal-on-scroll relative">
+                    <!-- Text/Icon Card (keep rounded) -->
+                    <div class="bg-white rounded-[3rem] p-12 shadow-[0_32px_64px_-16px_rgba(45,97,142,0.12)] border border-gray-100 relative overflow-hidden group h-full">
+                        <div class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 opacity-[0.03] text-brand-900 transition-transform duration-1000 group-hover:scale-110 pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/><polyline points="9 11 12 14 15 11"/></svg>
+                        </div>
+                        <div class="relative z-10">
+                            <!-- Icon Container (keep rounded) -->
+                            <div class="w-20 h-20 bg-brand-900 rounded-[1.5rem] flex items-center justify-center text-brand-sky mb-10 shadow-lg shadow-brand-900/20">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                            </div>
+                            <h3 class="text-4xl font-serif font-bold text-brand-900 mb-2">TEQSA Approved</h3>
+                            <div class="flex items-center gap-2 mb-12">
+                                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
+                                <span class="text-brand-brown font-bold text-sm tracking-wide">Provider ID: PRV12012</span>
+                            </div>
+                            <div class="space-y-10">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-7 h-7 rounded-full bg-brand-sky/10 flex items-center justify-center text-brand-sky mt-1 shrink-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-brand-900 text-lg">Australian Government Registered</h4>
+                                        <p class="text-gray-500 text-sm font-medium mt-1">Full compliance with national higher education standards.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-7 h-7 rounded-full bg-brand-sky/10 flex items-center justify-center text-brand-sky mt-1 shrink-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-brand-900 text-lg">AQF Level 9 Qualification</h4>
+                                        <p class="text-gray-500 text-sm font-medium mt-1">A Master's degree respected by employers nationwide.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-on-scroll">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold leading-[1.2] mb-10">
+                        <span class="text-brand-900">Quality you can trust,</span><br/>
+                        <span class="text-brand-orange">Standards you deserve.</span>
+                    </h2>
+                    <div class="space-y-8 text-gray-600 font-medium leading-relaxed max-w-xl text-lg">
+                        <p>King's Own Institute is registered by the <span class="text-brand-900 font-bold">Tertiary Education Quality and Standards Agency (TEQSA)</span>, Australia's independent national quality assurance and regulatory agency.</p>
+                        <p>This accreditation ensures that our MBA program meets rigorous Australian Qualifications Framework (AQF) standards, providing you with a qualification that holds real weight in the job market.</p>
+                    </div>
+                    <div class="mt-12">
+                        <a href="https://koi.edu.au/wp/about-koi/" target="_blank" class="inline-flex items-center gap-2.5 text-brand-900 font-bold group border-b-2 border-brand-brown/30 pb-1.5 hover:border-brand-orange hover:text-brand-orange transition-all duration-300">
+                            View TEQSA Registration
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Outcomes Section -->
+    <section id="outcomes" class="py-28 bg-gray-50 relative overflow-hidden scroll-mt-32">
+        <div class="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/shattered-island.png')] pointer-events-none"></div>
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center max-w-4xl mx-auto mb-20 reveal-on-scroll">
+                <span class="text-brand-orange font-bold tracking-[0.25em] uppercase text-xs mb-6 block flex items-center justify-center gap-3">
+                    <span class="w-8 h-[2px] bg-brand-orange"></span> Achieve Your Goals <span class="w-8 h-[2px] bg-brand-orange"></span>
+                </span>
+                <h2 class="text-4xl md:text-6xl font-serif font-bold text-brand-900 mb-8 leading-tight">
+                    Leadership. Strategy. <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange via-brand-brown to-brand-900">Career Growth.</span>
+                </h2>
+                <p class="text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto">
+                    Transition into executive roles with confidence. Our graduates report improved strategic capability, promotion readiness, and higher earning potential.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-20 relative">
+                <!-- Outcome cards -->
+                <div class="group bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_-15px_rgba(45,97,142,0.15)] hover:-translate-y-2 transition-all duration-500 reveal-on-scroll flex flex-col h-full" style="transition-delay: 100ms;">
+                    <!-- Icon container -->
+                    <div class="w-16 h-16 bg-brand-900 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-lg shadow-brand-900/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    
+                    <h3 class="text-2xl font-serif font-bold text-brand-900 mb-3 group-hover:text-brand-orange transition-colors">Strategic Leadership</h3>
+                    <p class="text-sm text-gray-500 mb-8 leading-relaxed flex-grow">Prepare for C-suite responsibilities. Lead organizational vision, culture, and high-level strategy.</p>
+                    
+                    <div class="space-y-6 bg-gray-50/50 p-6 rounded-3xl border border-gray-100">
+                        <div class="flex gap-4">
+                            <div class="w-1 rounded-full bg-brand-brown/30"></div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-brand-brown tracking-widest mb-1">Skill Developed</p>
+                                <p class="text-sm font-bold text-brand-900">Decision Making</p>
+                            </div>
+                        </div>
+                        <div class="w-full h-[1px] bg-gray-200"></div>
+                        <div class="flex gap-4">
+                            <div class="w-1 rounded-full bg-brand-orange"></div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-brand-orange tracking-widest mb-1">Career Outcome</p>
+                                <p class="text-sm font-bold text-brand-900">Executive & Board Roles</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_-15px_rgba(45,97,142,0.15)] hover:-translate-y-2 transition-all duration-500 reveal-on-scroll flex flex-col h-full" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-brand-orange rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 shadow-lg shadow-brand-orange/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    
+                    <h3 class="text-2xl font-serif font-bold text-brand-900 mb-3 group-hover:text-brand-orange transition-colors">Business Operations</h3>
+                    <p class="text-sm text-gray-500 mb-8 leading-relaxed flex-grow">Master the complexities of financial management, supply chain, and operational efficiency.</p>
+                    
+                    <div class="space-y-6 bg-gray-50/50 p-6 rounded-3xl border border-gray-100">
+                        <div class="flex gap-4">
+                            <div class="w-1 rounded-full bg-brand-brown/30"></div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-brand-brown tracking-widest mb-1">Skill Developed</p>
+                                <p class="text-sm font-bold text-brand-900">Operational Strategy</p>
+                            </div>
+                        </div>
+                        <div class="w-full h-[1px] bg-gray-200"></div>
+                        <div class="flex gap-4">
+                            <div class="w-1 rounded-full bg-brand-orange"></div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-brand-orange tracking-widest mb-1">Career Outcome</p>
+                                <p class="text-sm font-bold text-brand-900">General Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_-15px_rgba(45,97,142,0.15)] hover:-translate-y-2 transition-all duration-500 reveal-on-scroll flex flex-col h-full" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-brand-sky rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-lg shadow-brand-sky/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    
+                    <h3 class="text-2xl font-serif font-bold text-brand-900 mb-3 group-hover:text-brand-orange transition-colors">Strategic Innovation</h3>
+                    <p class="text-sm text-gray-500 mb-8 leading-relaxed flex-grow">Drive digital transformation and competitive advantage in a changing market.</p>
+                    
+                    <div class="space-y-6 bg-gray-50/50 p-6 rounded-3xl border border-gray-100">
+                        <div class="flex gap-4">
+                            <div class="w-1 rounded-full bg-brand-brown/30"></div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-brand-brown tracking-widest mb-1">Skill Developed</p>
+                                <p class="text-sm font-bold text-brand-900">Change Management</p>
+                            </div>
+                        </div>
+                        <div class="w-full h-[1px] bg-gray-200"></div>
+                        <div class="flex gap-4">
+                            <div class="w-1 rounded-full bg-brand-orange"></div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-brand-orange tracking-widest mb-1">Career Outcome</p>
+                                <p class="text-sm font-bold text-brand-900">Head of Strategy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Confidence Strip -->
+            <div class="bg-brand-900 rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-10 reveal-on-scroll text-white relative overflow-hidden shadow-2xl shadow-brand-900/30">
+                <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+                <div class="absolute -right-20 -top-40 w-80 h-80 bg-brand-sky/20 rounded-full blur-[80px]"></div>
+                
+                <div class="relative z-10 text-center md:text-left min-w-fit">
+                    <div class="flex items-baseline justify-center md:justify-start gap-1 mb-1">
+                        <span class="text-5xl md:text-6xl font-serif font-bold text-white">High</span>
+                    </div>
+                    <p class="text-[10px] uppercase font-bold tracking-[0.2em] text-gray-300">Employability</p>
+                    <p class="text-xs text-brand-sky/80 mt-1">Sought-after graduates</p>
+                </div>
+
+                <div class="w-full h-[1px] md:w-[1px] md:h-24 bg-gradient-to-r md:bg-gradient-to-b from-transparent via-white/20 to-transparent relative z-10"></div>
+
+                <div class="relative z-10 flex-1 text-center md:text-left">
+                     <p class="text-gray-300 text-xs font-bold uppercase tracking-widest mb-4">Our alumni work at:</p>
+                     <div class="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4 text-lg md:text-xl font-serif leading-none">
+                        <span class="text-white hover:text-brand-sky transition-colors cursor-default">Deloitte</span>
+                        <span class="text-white/30">•</span>
+                        <span class="text-white hover:text-brand-sky transition-colors cursor-default">Commonwealth Bank</span>
+                        <span class="text-white/30">•</span>
+                        <span class="text-white hover:text-brand-sky transition-colors cursor-default">Macquarie</span>
+                        <span class="text-white/30">•</span>
+                        <span class="text-white hover:text-brand-sky transition-colors cursor-default">Google</span>
+                        <span class="text-white/30">•</span>
+                        <span class="text-white hover:text-brand-sky transition-colors cursor-default">NSW Govt</span>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entry Criteria Section -->
+    <section id="entry-criteria" class="py-24 bg-white scroll-mt-32">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="text-brand-orange font-bold tracking-[0.2em] uppercase text-xs mb-4 block flex items-center justify-center gap-3">
+                    <span class="w-8 h-[2px] bg-brand-orange"></span> Admissions <span class="w-8 h-[2px] bg-brand-orange"></span>
+                </span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-900">Entry Criteria</h2>
+            </div>
+
+            <div class="grid md:grid-cols-12 gap-12 reveal-on-scroll">
+                <!-- Left Tabs -->
+                <div class="md:col-span-4 flex flex-col gap-2">
+                    <button onclick="switchEntryTab('requirements')" id="tab-requirements" class="entry-tab active w-full text-left p-5 border-l-4 border-brand-orange bg-brand-skyLight/20 text-brand-900 font-bold text-lg transition-all duration-300">
+                        Entry Requirements
+                    </button>
+                    <button onclick="switchEntryTab('rpl')" id="tab-rpl" class="entry-tab w-full text-left p-5 border-l-4 border-transparent hover:border-brand-orange/30 hover:bg-gray-50 text-gray-500 hover:text-brand-900 font-bold text-lg transition-all duration-300">
+                        Recognition of Prior Learning
+                    </button>
+                    <button onclick="switchEntryTab('flexible')" id="tab-flexible" class="entry-tab w-full text-left p-5 border-l-4 border-transparent hover:border-brand-orange/30 hover:bg-gray-50 text-gray-500 hover:text-brand-900 font-bold text-lg transition-all duration-300">
+                        Flexible Entry & Exit
+                    </button>
+                    <button onclick="switchEntryTab('info')" id="tab-info" class="entry-tab w-full text-left p-5 border-l-4 border-transparent hover:border-brand-orange/30 hover:bg-gray-50 text-gray-500 hover:text-brand-900 font-bold text-lg transition-all duration-300">
+                        Need More Info?
+                    </button>
+                </div>
+
+                <!-- Right Content -->
+                <div class="md:col-span-8 bg-gray-50 rounded-[2rem] p-10 relative overflow-hidden min-h-[400px]">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-sky/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+
+                    <!-- Tab 1: Requirements -->
+                    <div id="content-requirements" class="entry-content transition-all duration-500 opacity-100 translate-x-0">
+                        <h3 class="text-3xl font-serif font-bold text-brand-900 mb-6">Standard Entry Pathways</h3>
+                        <p class="text-gray-600 mb-8 leading-relaxed">To qualify for the Master of Business Administration, applicants generally need one of the following:</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange mt-0.5 flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">A recognised bachelor’s degree in a related discipline (e.g., Business, Management).</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange mt-0.5 flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">A recognised bachelor’s degree in any discipline plus 2 years of relevant work experience.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange mt-0.5 flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">A recognised Graduate Certificate in a related discipline.</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8 pt-8 border-t border-gray-200">
+                            <p class="text-xs text-gray-500 italic">* English language proficiency requirements apply for international students or non-native speakers.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab 2: RPL -->
+                    <div id="content-rpl" class="entry-content hidden transition-all duration-500 opacity-0 translate-x-4">
+                        <h3 class="text-3xl font-serif font-bold text-brand-900 mb-6">Recognition of Prior Learning</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">We value your experience. If you have significant managerial experience but lack a formal degree, you may still be eligible via our Professional Entry Pathway.</p>
+                        <ul class="space-y-4 mb-8">
+                             <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-brand-sky/10 flex items-center justify-center text-brand-sky mt-0.5 flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">Assessment based on professional portfolio and CV.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-brand-sky/10 flex items-center justify-center text-brand-sky mt-0.5 flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <span class="text-gray-700 font-medium">Potential credit transfer for previous postgraduate studies.</span>
+                            </li>
+                        </ul>
+                        <a href="https://koi.edu.au/future-students/apply-online/" target="_blank" class="inline-block text-sm font-bold text-brand-900 border-b-2 border-brand-orange hover:text-brand-orange transition-colors">Start your application now</a>
+                    </div>
+
+                    <!-- Tab 3: Flexible -->
+                    <div id="content-flexible" class="entry-content hidden transition-all duration-500 opacity-0 translate-x-4">
+                        <h3 class="text-3xl font-serif font-bold text-brand-900 mb-6">Study Your Way</h3>
+                        <p class="text-gray-600 mb-8 leading-relaxed">Life changes, and your study plan can too. The KOI MBA offers flexible nested qualifications.</p>
+                        <div class="space-y-6">
+                            <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm relative overflow-hidden group hover:border-brand-orange/30 hover:shadow-md transition-all duration-300">
+                                <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-brand-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <h4 class="font-bold text-brand-900 mb-1 group-hover:text-brand-orange transition-colors">Graduate Certificate</h4>
+                                <p class="text-sm text-gray-500">Complete 4 units. A great starting point or exit qualification.</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm relative overflow-hidden group hover:border-brand-orange/30 hover:shadow-md transition-all duration-300">
+                                <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-brand-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <h4 class="font-bold text-brand-900 mb-1 group-hover:text-brand-orange transition-colors">Graduate Diploma</h4>
+                                <p class="text-sm text-gray-500">Complete 8 units. Build deeper knowledge before the full MBA.</p>
+                            </div>
+                             <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm relative overflow-hidden group hover:border-brand-orange/30 hover:shadow-md transition-all duration-300">
+                                <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-brand-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <h4 class="font-bold text-brand-900 mb-1 group-hover:text-brand-orange transition-colors">Master of Business Administration</h4>
+                                <p class="text-sm text-gray-500">Complete 12 units (or fewer with RPL) for the full qualification.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 4: Info -->
+                    <div id="content-info" class="entry-content hidden transition-all duration-500 opacity-0 translate-x-4">
+                         <h3 class="text-3xl font-serif font-bold text-brand-900 mb-6">Need Assistance?</h3>
+                         <p class="text-gray-600 mb-8 leading-relaxed">Our admissions team is here to help you navigate entry requirements and find the best pathway for your career goals.</p>
+                         
+                         <div class="flex flex-col gap-4">
+                             <button onclick="toggleChat()" class="flex items-center gap-4 bg-brand-900 text-white p-5 rounded-xl hover:bg-brand-orange transition-all group text-left shadow-lg">
+                                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+                                </div>
+                                <div>
+                                    <span class="block font-bold">Speak to an Advisor</span>
+                                    <span class="text-xs text-white/70">Available Mon-Fri, 9am-5pm AEST</span>
+                                </div>
+                             </button>
+                             
+                             <button onclick="openLeadForm()" class="flex items-center gap-4 bg-white text-brand-900 border border-gray-200 p-5 rounded-xl hover:border-brand-orange hover:text-brand-orange transition-all group text-left shadow-sm">
+                                <div class="w-10 h-10 rounded-full bg-brand-skyLight text-brand-900 flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                </div>
+                                <div>
+                                    <span class="block font-bold">Download Course Guide</span>
+                                    <span class="text-xs text-gray-400">Detailed unit info and fees</span>
+                                </div>
+                             </button>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="py-24 bg-brand-dark relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark to-black"></div>
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-sky/5 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-orange/5 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-16 items-center mb-24">
+                <!-- Video Card Frame is Square -->
+                <div class="lg:col-span-7 reveal-on-scroll order-2 lg:order-1">
+                    <div onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')" class="group relative aspect-[16/9] rounded-none overflow-hidden cursor-pointer shadow-2xl shadow-black/50 border border-white/10 transform transition-all duration-500 hover:shadow-brand-sky/20">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80" alt="Student Life" class="object-cover w-full h-full transition-transform duration-[2s] ease-out group-hover:scale-110" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
+                        
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-24 h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 relative group-hover:bg-white/20">
+                                <div class="absolute inset-0 rounded-full border border-white/40 animate-[ping_3s_ease-in-out_infinite] opacity-50"></div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="0" class="ml-1"><path d="M5 3l14 9-14 9V3z"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-8 left-8 transition-transform duration-500 group-hover:translate-x-2">
+                            <span class="px-3 py-1 rounded-full bg-brand-orange text-white text-[10px] font-bold tracking-widest uppercase mb-3 inline-block shadow-lg">Student Perspectives</span>
+                            <h3 class="text-white font-serif text-3xl md:text-4xl leading-tight">Flexible Learning<br/><span class="text-brand-sky">at KOI</span></h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 reveal-on-scroll order-1 lg:order-2">
+                    <span class="text-brand-orange text-xs font-bold tracking-[0.2em] uppercase mb-6 block flex items-center gap-3">
+                        <span class="w-8 h-[2px] bg-brand-orange"></span> Student Experience
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-8 leading-tight">
+                        Supported & <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-sky to-white">Connected.</span>
+                    </h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-10 font-light border-l-2 border-brand-orange/50 pl-6">
+                        You are never alone. Our online learning environment connects you with academic staff and a network of ambitious peers. Study without pausing your career.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <span class="block text-5xl font-serif font-bold text-white mb-1">15k+</span>
+                            <span class="text-[10px] font-bold tracking-widest text-brand-sky uppercase">Alumni Network</span>
+                        </div>
+                        <div>
+                            <span class="block text-5xl font-serif font-bold text-white mb-1">40+</span>
+                            <span class="text-[10px] font-bold tracking-widest text-brand-sky uppercase">Nationalities</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Stories -->
+            <div class="reveal-on-scroll border-t border-white/5 pt-12">
+                <div class="flex items-center justify-between mb-8">
+                    <h4 class="text-brand-sky font-bold uppercase tracking-widest text-xs flex items-center gap-4">
+                        <span class="w-8 h-[1px] bg-brand-sky"></span>
+                        Student Stories
+                    </h4>
+                    <span class="text-white/40 text-[10px] uppercase tracking-widest hidden md:block">Scroll to pause</span>
+                </div>
+                
+                <div class="marquee-mask overflow-hidden relative group pause-on-hover">
+                    <div class="animate-marquee flex gap-6 w-max" id="video-marquee-track">
+                        <!-- Cards added via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-gray-50 scroll-mt-32">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-4xl font-serif font-bold text-center text-brand-900 mb-16">Common Questions</h2>
+            <div class="space-y-6" id="faq-list"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 relative text-white pt-24 pb-12 overflow-hidden border-t border-white/5">
+        <!-- Background Decor -->
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-orange/50 to-transparent"></div>
+        
+        <!-- Large Background Glow -->
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-brand-sky/5 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Top Section: CTA & Socials -->
+            <div class="flex flex-col md:flex-row justify-between items-end gap-12 mb-20 pb-12 border-b border-white/5">
+                <div class="max-w-xl">
+                    <span class="text-brand-orange font-bold tracking-[0.2em] uppercase text-xs mb-4 block flex items-center gap-3">
+                         <span class="w-6 h-[1px] bg-brand-orange"></span> Start Your Journey
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-8 leading-tight">Ready to lead the future of business?</h2>
+                    <div class="flex flex-wrap gap-4">
+                         <a href="https://koi.edu.au/future-students/apply-online/" target="_blank" class="bg-white text-brand-900 px-8 py-3 rounded-sm font-bold uppercase tracking-widest text-xs hover:bg-brand-orange hover:text-white transition-all shadow-lg hover:shadow-glow-orange hover:-translate-y-0.5">Apply Now</a>
+                         <button onclick="openLeadForm()" class="text-white border border-white/20 px-8 py-3 rounded-sm font-bold uppercase tracking-widest text-xs hover:border-white hover:bg-white/5 transition-all">Download Guide</button>
+                    </div>
+                </div>
+                 
+                 <!-- Social Icons -->
+                 <div class="flex gap-4">
+                     <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-orange hover:border-brand-orange hover:text-white text-white/60 transition-all duration-300 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                     </a>
+                     <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-orange hover:border-brand-orange hover:text-white text-white/60 transition-all duration-300 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                     </a>
+                     <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-orange hover:border-brand-orange hover:text-white text-white/60 transition-all duration-300 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                     </a>
+                     <a href="#" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-orange hover:border-brand-orange hover:text-white text-white/60 transition-all duration-300 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+                     </a>
+                 </div>
+            </div>
+
+            <!-- Main Grid -->
+            <div class="grid md:grid-cols-12 gap-12 mb-20">
+                <!-- Brand Column (4 cols) -->
+                <div class="md:col-span-4">
+                     <a href="#" class="flex items-center gap-3 mb-8 group">
+                        <div class="bg-white/5 border border-white/10 p-2.5 rounded-xl group-hover:bg-white/10 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-brand-sky"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-3xl font-serif font-bold tracking-tight leading-none text-white">KOI</span>
+                            <span class="text-[10px] tracking-widest uppercase font-bold text-brand-sky/80">King's Own Institute</span>
+                        </div>
+                    </a>
+                    <p class="text-gray-400 font-light leading-relaxed mb-8 pr-10 text-sm">
+                        A premier higher education provider based in Sydney, offering market-driven postgraduate courses tailored for career success in the global marketplace.
+                    </p>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center gap-3 text-[10px] font-bold tracking-widest text-white/60 uppercase">
+                             <div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div> 
+                             TEQSA Registered
+                        </div>
+                        <div class="flex items-center gap-3 text-[10px] font-bold tracking-widest text-white/60 uppercase">
+                             <div class="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]"></div>
+                             AQF Level 9 Compliant
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Links Column (2 cols) -->
+                <div class="md:col-span-2">
+                    <h4 class="font-bold text-sm uppercase tracking-widest text-white mb-8 flex items-center gap-2">
+                        Discover
+                    </h4>
+                    <ul class="space-y-4 text-sm text-gray-400 font-medium">
+                        <li><a href="#about" class="hover:text-brand-orange transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-brand-orange rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>About KOI</a></li>
+                        <li><a href="#curriculum" class="hover:text-brand-orange transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-brand-orange rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>Curriculum</a></li>
+                        <li><a href="#outcomes" class="hover:text-brand-orange transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-brand-orange rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>Outcomes</a></li>
+                        <li><a href="#entry-criteria" class="hover:text-brand-orange transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-brand-orange rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>Admissions</a></li>
+                        <li><a href="https://koi.edu.au/" target="_blank" class="hover:text-brand-orange transition-colors flex items-center gap-2 group"><span class="w-1 h-1 bg-brand-orange rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>Main Website</a></li>
+                    </ul>
+                </div>
+
+                 <!-- Contact Column (3 cols) -->
+                <div class="md:col-span-3">
+                    <h4 class="font-bold text-sm uppercase tracking-widest text-white mb-8">Contact</h4>
+                    <ul class="space-y-6 text-sm text-gray-400">
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-brand-sky">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <span>Level 1, 31 Market St<br>Sydney NSW 2000</span>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-brand-sky">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <a href="tel:+61292833583" class="hover:text-white transition-colors py-1 block">+61 2 9283 3583</a>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-brand-sky">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <a href="mailto:admissions@koi.edu.au" class="hover:text-white transition-colors py-1 block">admissions@koi.edu.au</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Legal/Badge Column (3 cols) -->
+                <div class="md:col-span-3">
+                    <h4 class="font-bold text-sm uppercase tracking-widest text-white mb-8">Accreditation</h4>
+                     <div class="bg-gradient-to-br from-white/10 to-transparent p-6 border border-white/10 rounded-2xl backdrop-blur-sm">
+                        <p class="text-xs text-gray-300 leading-relaxed mb-6 font-light">
+                            King's Own Institute is a higher education institution accredited by the Tertiary Education Quality and Standards Agency (TEQSA).
+                        </p>
+                        <div class="flex justify-between items-end pt-4 border-t border-white/10">
+                            <div class="text-[10px] uppercase text-brand-sky font-bold tracking-widest leading-loose">
+                                PRV12012<br>CRICOS 03171A
+                            </div>
+                            <div class="text-white/20">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/><polyline points="9 11 12 14 15 11"/></svg>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 uppercase tracking-widest font-medium">
+                <div>&copy; 2025 King's Own Institute. All Rights Reserved.</div>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+                    <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                    <a href="#" class="hover:text-white transition-colors">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lead Form Modal -->
+    <div id="lead-form-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-brand-900/80 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-[1rem] w-full max-w-5xl shadow-2xl relative overflow-hidden transform scale-95 transition-transform duration-300 flex flex-col md:flex-row max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible">
+            
+            <button onclick="closeLeadForm()" class="absolute top-4 right-4 z-20 p-2 bg-white/80 hover:bg-gray-100 rounded-full text-gray-400 hover:text-brand-900 transition-colors shadow-sm border border-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+
+            <!-- Column 1: Value Proposition -->
+            <div class="w-full md:w-5/12 bg-slate-50 p-8 md:p-10 flex flex-col justify-between border-r border-gray-100">
+                <div>
+                    <h3 class="font-serif font-bold text-3xl text-brand-900 mb-3 leading-tight">Get your comprehensive course guide.</h3>
+                    <p class="text-gray-600 mb-8 font-medium text-sm">Enter your details to unlock full access to:</p>
+                    
+                    <ul class="space-y-5 mb-10">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-0.5 w-5 h-5 rounded-full bg-brand-900/10 flex items-center justify-center text-brand-900 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="text-slate-700 text-sm font-semibold">Industry-recognized career pathways</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-0.5 w-5 h-5 rounded-full bg-brand-900/10 flex items-center justify-center text-brand-900 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="text-slate-700 text-sm font-semibold">Full unit breakdowns and curriculum</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-0.5 w-5 h-5 rounded-full bg-brand-900/10 flex items-center justify-center text-brand-900 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="text-slate-700 text-sm font-semibold">Flexible online study options</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-0.5 w-5 h-5 rounded-full bg-brand-900/10 flex items-center justify-center text-brand-900 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="text-slate-700 text-sm font-semibold">Tuition fees and scholarship info</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="relative rounded-xl overflow-hidden shadow-lg border border-gray-200 group">
+                     <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" alt="KOI Student" class="w-full h-40 object-cover grayscale mix-blend-multiply opacity-80 group-hover:scale-105 transition-transform duration-700">
+                     <div class="absolute inset-0 bg-brand-900/10"></div>
+                </div>
+            </div>
+
+            <!-- Column 2: The Form -->
+            <div class="w-full md:w-7/12 p-8 md:p-10 bg-white">
+                <form onsubmit="handleLeadSubmit(event)" class="space-y-5">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold uppercase tracking-wider text-gray-500">First Name</label>
+                            <input type="text" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-brand-900 focus:ring-1 focus:ring-brand-900 outline-none transition-all text-sm font-medium text-slate-800">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Last Name</label>
+                            <input type="text" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-brand-900 focus:ring-1 focus:ring-brand-900 outline-none transition-all text-sm font-medium text-slate-800">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Email Address</label>
+                        <input type="email" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-brand-900 focus:ring-1 focus:ring-brand-900 outline-none transition-all text-sm font-medium text-slate-800">
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Phone Number</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none border-r border-gray-200 pr-3 mr-3 my-2">
+                                <span class="text-slate-600 font-bold text-xs flex items-center gap-1.5">
+                                    🇦🇺 +61
+                                </span>
+                            </div>
+                            <input type="tel" required class="w-full pl-24 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-brand-900 focus:ring-1 focus:ring-brand-900 outline-none transition-all text-sm font-medium text-slate-800">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold uppercase tracking-wider text-gray-500">When do you plan to start?</label>
+                            <div class="relative">
+                                <select class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-brand-900 focus:ring-1 focus:ring-brand-900 outline-none transition-all text-sm font-medium text-slate-800 appearance-none cursor-pointer">
+                                    <option>As soon as possible</option>
+                                    <option>Within 3 months</option>
+                                    <option>Next Year</option>
+                                    <option>Undecided</option>
+                                </select>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold uppercase tracking-wider text-gray-500">How can we assist you?</label>
+                            <div class="relative">
+                                <select class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-brand-900 focus:ring-1 focus:ring-brand-900 outline-none transition-all text-sm font-medium text-slate-800 appearance-none cursor-pointer">
+                                    <option>I'm ready to apply</option>
+                                    <option>I have questions about eligibility</option>
+                                    <option>Just researching for now</option>
+                                </select>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive reCAPTCHA -->
+                    <div id="captcha-container" class="bg-gray-50 border border-gray-200 rounded-[4px] p-3 flex items-center justify-between w-[240px] shadow-[0_1px_2px_rgba(0,0,0,0.05)] select-none cursor-pointer hover:bg-gray-100 transition-all duration-200 mb-2" onclick="toggleCaptcha()">
+                        <div class="flex items-center gap-3">
+                            <div id="captcha-checkbox" class="w-6 h-6 border-2 border-gray-300 rounded-[2px] bg-white flex items-center justify-center transition-all duration-200">
+                                <!-- Checkmark will appear here -->
+                            </div>
+                            <span class="text-sm text-gray-600 font-medium">I'm not a robot</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="w-6 h-6 opacity-60">
+                            <span class="text-[9px] text-gray-400 font-medium mt-0.5">reCAPTCHA</span>
+                        </div>
+                    </div>
+                    <div id="captcha-error" class="hidden text-red-600 text-[10px] font-bold mb-4 flex items-center gap-1 animate-pulse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        Verification required
+                    </div>
+
+                    <button type="submit" class="w-full bg-brand-900 text-white py-4 rounded-lg font-bold text-sm tracking-widest uppercase shadow-xl shadow-brand-900/20 hover:bg-brand-800 hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group">
+                        Download Guide
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    </button>
+                    
+                    <p class="text-center text-xs text-gray-400">Your information is kept secure. By downloading, you agree to our Privacy Policy.</p>
+                </form>
+                <div id="form-success" class="hidden text-center py-10">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <p class="text-brand-900 font-bold text-2xl mb-2">Guide Sent!</p>
+                    <p class="text-gray-500">Please check your inbox for the download link.</p>
+                    <button onclick="closeLeadForm()" class="mt-8 text-brand-900 font-bold hover:underline">Close Window</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <button id="chat-toggle" onclick="toggleChat()" class="fixed bottom-8 right-8 z-[100] p-4 rounded-full shadow-2xl bg-brand-orange text-white flex items-center gap-3 cursor-pointer hover:shadow-glow-orange border-2 border-white/20 transition-all active:scale-95">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+        <span class="font-bold text-sm hidden md:inline tracking-wide">Speak to an Advisor</span>
+    </button>
+
+    <div id="chat-window" class="fixed bottom-8 right-8 z-[100] w-full max-w-sm bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col h-[500px]">
+        <div class="bg-brand-900 p-5 flex justify-between items-center text-white">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-brand-sky/20 rounded-xl">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-sky"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-serif font-bold text-lg leading-none">Course Advisor</h3>
+                    <p class="text-xs text-brand-sky/80 mt-1">Online</p>
+                </div>
+            </div>
+            <button onclick="toggleChat()" class="p-2 hover:bg-white/10 rounded-full transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-5 space-y-4 bg-gray-50/50">
+            <div class="flex justify-start">
+                <div class="bg-white border border-gray-100 p-3 rounded-2xl rounded-br-none text-sm text-gray-700 shadow-sm">
+                    Hi! I can help you with eligibility, fees, or course details. What would you like to know?
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-white border-t border-gray-100 flex gap-2">
+            <input id="chat-input" type="text" placeholder="Type your question..." class="flex-1 px-4 py-3 bg-gray-50 border-transparent focus:bg-white border focus:border-brand-orange rounded-xl outline-none text-sm transition-all" onkeypress="if(event.key==='Enter') sendChatMessage()">
+            <button onclick="sendChatMessage()" class="p-3 bg-brand-orange text-white rounded-xl shadow-lg hover:shadow-glow-orange transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const aboutImages = [
+            "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
+            "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80"
+        ];
+
+        let currentSlide = 0;
+        let slideInterval;
+
+        function initCarousel() {
+            const track = document.getElementById('about-carousel');
+            const dotsContainer = document.getElementById('carousel-dots');
+            
+            if (!track || !dotsContainer) return;
+
+            track.innerHTML = '';
+            dotsContainer.innerHTML = '';
+
+            aboutImages.forEach((img, index) => {
+                const slide = document.createElement('img');
+                slide.src = img;
+                slide.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
+                slide.alt = "KOI Campus Life";
+                slide.style.borderRadius = "0";
+                track.appendChild(slide);
+
+                const dot = document.createElement('button');
+                dot.className = `w-12 h-1 rounded-full transition-all duration-300 ${index === 0 ? 'bg-brand-orange' : 'bg-white/40 hover:bg-white/80'}`;
+                dot.onclick = () => goToSlide(index);
+                dotsContainer.appendChild(dot);
+            });
+
+            startSlideTimer();
+        }
+
+        function updateCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('#carousel-dots button');
+
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.className = 'w-12 h-1 rounded-full transition-all duration-300 bg-brand-orange';
+                } else {
+                    dot.className = 'w-12 h-1 rounded-full transition-all duration-300 bg-white/40 hover:bg-white/80';
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % aboutImages.length;
+            updateCarousel();
+            resetSlideTimer();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + aboutImages.length) % aboutImages.length;
+            updateCarousel();
+            resetSlideTimer();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+            resetSlideTimer();
+        }
+
+        function startSlideTimer() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetSlideTimer() {
+            clearInterval(slideInterval);
+            startSlideTimer();
+        }
+
+        const studentStories = [
+            { img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80', name: 'Sarah L.', role: 'Marketing Manager', year: 'Class of 2023' },
+            { img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80', name: 'James K.', role: 'Business Owner', year: 'Class of 2022' },
+            { img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80', name: 'Priya M.', role: 'Senior Analyst', year: 'Class of 2024' },
+            { img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80', name: 'Michael T.', role: 'Operations Lead', year: 'Class of 2021' },
+            { img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80', name: 'Elena R.', role: 'Project Director', year: 'Class of 2023' },
+            { img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', name: 'David C.', role: 'Finance Manager', year: 'Class of 2022' }
+        ];
+
+        function initMarquee() {
+            const track = document.getElementById('video-marquee-track');
+            if(!track) return;
+            
+            const createCard = (story) => {
+                return `
+                    <div class="w-48 aspect-[9/16] rounded-none overflow-hidden relative cursor-pointer group flex-shrink-0 transition-all duration-500 hover:scale-105 border border-white/10 hover:border-brand-sky/50 hover:shadow-[0_0_30px_rgba(74,196,208,0.3)]" onclick="openVideo()">
+                        <img src="${story.img}" class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 ease-out group-hover:scale-110" alt="${story.name}">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
+                        
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-90 group-hover:scale-100">
+                            <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center shadow-glow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="0"><path d="M5 3l14 9-14 9V3z"/></svg>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <p class="text-white font-serif font-bold text-lg leading-none mb-1 opacity-70 group-hover:opacity-100 transition-opacity duration-500">${story.name}</p>
+                            <p class="text-brand-sky text-[10px] uppercase font-bold tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">${story.role}</p>
+                        </div>
+                    </div>
+                `;
+            };
+
+            let content = '';
+            for(let i=0; i<4; i++) {
+                studentStories.forEach(s => content += createCard(s));
+            }
+            track.innerHTML = content;
+        }
+
+        window.openVideo = function(videoUrl) {
+            const modal = document.getElementById('video-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.replace('opacity-0', 'opacity-100'), 10);
+        };
+
+        window.closeVideo = function() {
+            const modal = document.getElementById('video-modal');
+            modal.classList.replace('opacity-100', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 500);
+        };
+
+        const subjects = [
+            { code: 'BUS700', title: 'Strategic Management', desc: 'Lead organisational growth.', fullDesc: 'Develop the vision to navigate complex business environments and drive competitive advantage.', topics: ['Strategy Formulation', 'Industry Analysis', 'Leadership'], icon: 'award' },
+            { code: 'ACC700', title: 'Financial Analysis', desc: 'Make evidence-based decisions.', fullDesc: 'Master financial reporting and analysis to assess performance and create value.', topics: ['Financial Statements', 'Investment Decisions', 'Value Creation'], icon: 'book-open' },
+            { code: 'MKT700', title: 'Marketing Innovation', desc: 'Create customer value.', fullDesc: 'Design innovative marketing strategies that resonate in digital and global markets.', topics: ['Digital Strategy', 'Brand Management', 'Customer Insights'], icon: 'globe' },
+            { code: 'BUS702', title: 'Business Analytics', desc: 'Turn data into action.', fullDesc: 'Leverage quantitative methods to solve business problems and optimize operations.', topics: ['Data Visualization', 'Decision Modeling', 'Forecasting'], icon: 'bar-chart' },
+            { code: 'BUS703', title: 'Operations & Supply', desc: 'Optimise efficiency.', fullDesc: 'Manage global supply chains and internal processes for maximum operational performance.', topics: ['Logistics', 'Quality Management', 'Process Improvement'], icon: 'truck' },
+            { code: 'MGT701', title: 'Leadership Dynamics', desc: 'Inspire high-performance teams.', fullDesc: 'Apply psychology and management theory to lead diverse teams effectively.', topics: ['Team Building', 'Change Management', 'Conflict Resolution'], icon: 'users' },
+            { code: 'IBU700', title: 'International Business', desc: 'Expand globally.', fullDesc: 'Navigate the complexities of cross-border trade, culture, and regulation.', topics: ['Global Markets', 'Trade Strategy', 'Risk Management'], icon: 'compass' },
+            { code: 'ENT700', title: 'Entrepreneurship', desc: 'Launch and scale.', fullDesc: 'From ideation to execution, learn the skills to build successful new ventures.', topics: ['Startup Strategy', 'Business Modeling', 'Innovation'], icon: 'zap' },
+            { code: 'BUS704', title: 'Business Ethics', desc: 'Lead with integrity.', fullDesc: 'Navigate corporate governance and ethical challenges in the modern business landscape.', topics: ['CSR', 'Governance', 'Ethical Leadership'], icon: 'shield' },
+            { code: 'ICT700', title: 'Digital Transformation', desc: 'Lead in the digital age.', fullDesc: 'Harness emerging technologies to transform business models and strategy.', topics: ['Tech Trends', 'Digital Disruption', 'Innovation Strategy'], icon: 'cpu' },
+            { code: 'ACC701', title: 'Managerial Accounting', desc: 'Control performance.', fullDesc: 'Use cost analysis and budgeting to drive profitability and operational control.', topics: ['Budgeting', 'Performance Measurement', 'Cost Control'], icon: 'calculator' },
+            { code: 'BUS799', title: 'Capstone Project', desc: 'Apply your learning.', fullDesc: 'Solve a real-world business problem for an industry client in this final project.', topics: ['Consulting', 'Strategic Analysis', 'Executive Reporting'], icon: 'flag' }
+        ];
+
+        const whyKoiData = [
+            { code: 'EXP', title: 'Industry Focused', desc: 'Curriculum built for the workplace.', fullDesc: 'Units designed with input from industry leaders to ensure relevance.', topics: ['Live Case Studies', 'Practical Skills', 'Job Ready'], icon: 'briefcase' },
+            { code: 'NET', title: 'Global Network', desc: 'Connect with 15k+ alumni.', fullDesc: 'Join a diverse community of professionals working in top-tier firms globally.', topics: ['Networking', 'Mentorship', 'Events'], icon: 'share-2' },
+            { code: 'QLT', title: 'TEQSA Accredited', desc: 'Recognised quality.', fullDesc: 'A fully accredited AQF Level 9 Master\'s degree respected by employers.', topics: ['Government Registered', 'High Standards', 'Compliance'], icon: 'check-circle' },
+            { code: 'FLX', title: '100% Online', desc: 'Study on your terms.', fullDesc: 'Flexible delivery designed for busy working professionals.', topics: ['24/7 Access', 'Mobile Friendly', 'Self-Paced'], icon: 'clock' },
+            { code: 'EXP', title: 'Expert Faculty', desc: 'Learn from the best.', fullDesc: 'Academic staff with real-world business experience and PhD qualifications.', topics: ['Experienced Lecturers', 'Industry Practitioners', 'Research'], icon: 'graduation-cap' },
+            { code: 'SUP', title: 'Career Support', desc: 'Reach your potential.', fullDesc: 'Personalized career coaching and support to help you advance.', topics: ['Resume Review', 'Interview Prep', 'Career Advice'], icon: 'trending-up' }
+        ];
+
+        const icons = {
+            'award': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
+            'book-open': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a4 4 0 0 0-4-4H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a4 4 0 0 1 4-4h6z"/></svg>',
+            'globe': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+            'bar-chart': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>',
+            'truck': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+            'users': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+            'compass': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>',
+            'zap': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+            'shield': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+            'cpu': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>',
+            'calculator': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="8" y1="18" x2="8" y2="18"/></svg>',
+            'flag': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>',
+            'briefcase': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+            'share-2': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>',
+            'check-circle': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+            'clock': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+            'graduation-cap': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>',
+            'trending-up': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>'
+        };
+
+        const faqs = [
+            { q: "What are the entry requirements?", a: "Applicants typically need an Australian Bachelor degree (or equivalent). Professional entry pathways are available for applicants with significant managerial experience (Recognition of Prior Learning)." },
+            { q: "Can I study 100% online?", a: "Yes. Our MBA is designed for working professionals and is delivered entirely online with flexible access to materials and support." },
+            { q: "How long is the MBA?", a: "The standard duration is 1.5 to 2 years, depending on your study load (full-time or part-time options available)." },
+            { q: "Are there flexible payment options?", a: "Yes, we offer competitive tuition fees and flexible payment plans. Contact our admissions team to discuss your options." }
+        ];
+
+        let currentData = subjects;
+        let isTimelineExpanded = false;
+
+        function renderTimeline(data, expanded = false) {
+            const container = document.getElementById('program-timeline');
+            if(!container) return;
+            container.innerHTML = '';
+            
+            const itemsToShow = expanded ? data.length : 5;
+            const visibleData = data.slice(0, itemsToShow);
+
+            visibleData.forEach((item, index) => {
+                const el = document.createElement('div');
+                el.className = 'timeline-item';
+                el.style.animationDelay = `${index * 50}ms`;
+                
+                el.innerHTML = `
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card bg-white p-6 rounded-2xl cursor-pointer group" onclick="toggleTimelineItem(this)">
+                        <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-brand-skyLight text-brand-900 flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-colors duration-300">
+                                    ${icons[item.icon] || icons['book-open']}
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-bold tracking-widest uppercase text-gray-400 block mb-1">${item.code || 'UNIT'}</span>
+                                    <h3 class="text-lg font-bold text-brand-900 leading-tight group-hover:text-brand-orange transition-colors">${item.title}</h3>
+                                </div>
+                            </div>
+                            <div class="chevron transition-transform duration-300 text-gray-400 group-hover:text-brand-orange">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                            </div>
+                        </div>
+                        <div class="item-details">
+                            <p class="text-sm text-gray-600 leading-relaxed mb-4">${item.desc}</p>
+                            ${item.fullDesc ? `<p class="text-xs text-gray-500 mb-4 leading-relaxed">${item.fullDesc}</p>` : ''}
+                            ${item.topics ? `
+                                <div class="flex flex-wrap gap-2">
+                                    ${item.topics.map(t => `<span class="px-3 py-1 bg-gray-50 border border-gray-100 rounded-full text-[10px] font-bold text-brand-900 uppercase tracking-wide">${t}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(el);
+            });
+
+            const btnContainer = document.getElementById('view-all-container');
+            const btnText = document.getElementById('view-all-text');
+            const btnIcon = document.getElementById('view-all-icon');
+            
+            if (btnContainer && btnText && btnIcon) {
+                if(expanded || data.length <= 5) {
+                    btnContainer.classList.add('expanded');
+                    if (data.length <= 5) { btnContainer.style.display = 'none'; } 
+                    else { btnText.innerText = "Show Less"; btnIcon.style.transform = "rotate(180deg)"; btnContainer.style.display = 'block'; }
+                } else {
+                    btnContainer.classList.remove('expanded');
+                    btnContainer.style.display = 'block';
+                    btnText.innerText = `View All Subjects (${data.length} Units)`;
+                    btnIcon.style.transform = "rotate(0deg)";
+                }
+            }
+        }
+
+        window.toggleTimelineItem = card => { card.classList.toggle('active'); };
+        window.toggleViewAll = () => { isTimelineExpanded = !isTimelineExpanded; renderTimeline(currentData, isTimelineExpanded); };
+
+        window.switchProgram = type => {
+            const coreBtn = document.getElementById('switch-core'), whyBtn = document.getElementById('switch-why');
+            if(type === 'core') {
+                coreBtn.classList.add('active'); coreBtn.classList.remove('text-gray-500');
+                whyBtn.classList.remove('active'); whyBtn.classList.add('text-gray-500');
+                currentData = subjects;
+            } else {
+                whyBtn.classList.add('active'); whyBtn.classList.remove('text-gray-500');
+                coreBtn.classList.remove('active'); coreBtn.classList.add('text-gray-500');
+                currentData = whyKoiData;
+            }
+            isTimelineExpanded = false; renderTimeline(currentData, false);
+        };
+
+        window.toggleFaq = el => {
+            const item = el.closest('.faq-item'), wasActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('active', 'bg-brand-skyLight/10');
+            });
+            
+            if(!wasActive) {
+                item.classList.add('active', 'bg-brand-skyLight/10');
+            }
+        };
+
+        window.switchEntryTab = (tabId) => {
+            document.querySelectorAll('.entry-tab').forEach(tab => {
+                tab.classList.remove('active', 'border-brand-orange', 'bg-brand-skyLight/20', 'text-brand-900');
+                tab.classList.add('border-transparent', 'hover:border-brand-orange/30', 'hover:bg-gray-50', 'text-gray-500', 'hover:text-brand-900');
+            });
+            const activeTab = document.getElementById('tab-' + tabId);
+            if(activeTab) {
+                activeTab.classList.add('active', 'border-brand-orange', 'bg-brand-skyLight/20', 'text-brand-900');
+                activeTab.classList.remove('border-transparent', 'hover:border-brand-orange/30', 'hover:bg-gray-50', 'text-gray-500', 'hover:text-brand-900');
+            }
+
+            document.querySelectorAll('.entry-content').forEach(content => {
+                content.classList.add('hidden', 'opacity-0', 'translate-x-4');
+                content.classList.remove('opacity-100', 'translate-x-0');
+            });
+            
+            const activeContent = document.getElementById('content-' + tabId);
+            if(activeContent) {
+                activeContent.classList.remove('hidden');
+                setTimeout(() => {
+                    activeContent.classList.remove('opacity-0', 'translate-x-4');
+                    activeContent.classList.add('opacity-100', 'translate-x-0');
+                }, 10);
+            }
+        };
+
+        const faqTarget = document.getElementById('faq-list');
+        if (faqTarget) {
+            faqTarget.className = "bg-white rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] border border-gray-100 divide-y divide-gray-100 overflow-hidden";
+            
+            faqs.forEach((faq, index) => {
+                const div = document.createElement('div');
+                div.className = "faq-item transition-all duration-300 group";
+                
+                div.innerHTML = `
+                    <button class="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-serif font-bold text-lg md:text-xl text-brand-900 group-hover:text-brand-orange transition-colors pr-8">${faq.q}</span>
+                        <div class="faq-icon relative flex items-center justify-center w-8 h-8 rounded-full bg-brand-skyLight/30 text-brand-900 group-hover:bg-brand-orange group-hover:text-white transition-all duration-300 transform">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer px-6 md:px-8 bg-gray-50/50">
+                        <div class="pb-8 pt-2 text-gray-600 font-light leading-relaxed">
+                            ${faq.a}
+                        </div>
+                    </div>
+                `;
+                faqTarget.appendChild(div);
+            });
+        }
+
+        const nav = document.getElementById('navbar');
+        window.onscroll = () => {
+            const isScrolled = window.scrollY > 50;
+            nav.classList.toggle('shadow-lg', isScrolled);
+            nav.classList.toggle('shadow-sm', !isScrolled);
+            nav.classList.toggle('py-4', isScrolled);
+            nav.classList.toggle('py-6', !isScrolled);
+            
+            const sections = ['about', 'curriculum', 'accreditation', 'outcomes', 'entry-criteria', 'faq'];
+            const scrollPos = window.scrollY + 100;
+            sections.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
+                    document.querySelectorAll('.section-nav-link').forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                    });
+                }
+            });
+        };
+
+        document.getElementById('mobile-menu-btn').onclick = () => document.getElementById('mobile-menu').classList.toggle('hidden');
+
+        const leadModal = document.getElementById('lead-form-modal');
+        window.openLeadForm = () => { leadModal.classList.remove('hidden'); setTimeout(() => { leadModal.classList.replace('opacity-0', 'opacity-100'); }, 10); };
+        
+        window.resetLeadForm = () => {
+            document.querySelector('#lead-form-modal form').reset();
+            document.getElementById('form-success').classList.add('hidden');
+            document.querySelector('#lead-form-modal form').classList.remove('hidden');
+            
+            // Reset Captcha State
+            captchaVerified = false;
+            const checkbox = document.getElementById('captcha-checkbox');
+            checkbox.innerHTML = '';
+            checkbox.className = 'w-6 h-6 border-2 border-gray-300 rounded-[2px] bg-white flex items-center justify-center transition-all duration-200';
+            
+            // Reset Captcha Container Style
+            const container = document.getElementById('captcha-container');
+            container.classList.remove('border-red-500', 'bg-red-50');
+            container.classList.add('bg-gray-50', 'border-gray-200');
+            
+            // Hide Error
+            document.getElementById('captcha-error').classList.add('hidden');
+        };
+
+        window.closeLeadForm = () => { 
+            const modal = document.getElementById('lead-form-modal');
+            modal.classList.replace('opacity-100', 'opacity-0'); 
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                window.resetLeadForm(); // Reset form when fully closed
+            }, 300); 
+        };
+
+        window.handleLeadSubmit = e => { 
+            e.preventDefault(); 
+            
+            // Production Level Validation Check
+            if (!captchaVerified) {
+                const container = document.getElementById('captcha-container');
+                const errorMsg = document.getElementById('captcha-error');
+                
+                // Visual Error State
+                container.classList.remove('border-gray-200', 'bg-gray-50');
+                container.classList.add('border-red-500', 'bg-red-50');
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            e.target.classList.add('hidden'); 
+            document.getElementById('form-success').classList.remove('hidden'); 
+        };
+
+        let captchaVerified = false;
+        window.toggleCaptcha = function() {
+            if(captchaVerified) return;
+            
+            // Clear error state immediately on click
+            const container = document.getElementById('captcha-container');
+            const errorMsg = document.getElementById('captcha-error');
+            container.classList.remove('border-red-500', 'bg-red-50');
+            container.classList.add('border-gray-200', 'bg-gray-50');
+            errorMsg.classList.add('hidden');
+
+            const checkbox = document.getElementById('captcha-checkbox');
+            checkbox.innerHTML = `<div class="w-4 h-4 border-2 border-brand-900 border-t-transparent rounded-full animate-spin"></div>`;
+            
+            setTimeout(() => {
+                captchaVerified = true;
+                checkbox.classList.remove('bg-white', 'border-gray-300');
+                checkbox.classList.add('bg-green-500', 'border-green-500');
+                checkbox.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="text-white"><polyline points="20 6 9 17 4 12"/></svg>`;
+            }, 800);
+        }
+
+        const chatWindow = document.getElementById('chat-window'), chatToggle = document.getElementById('chat-toggle'), chatMessages = document.getElementById('chat-messages'), chatInput = document.getElementById('chat-input');
+        window.toggleChat = () => { chatWindow.classList.toggle('open'); chatToggle.classList.toggle('hidden'); };
+        window.sendChatMessage = () => {
+            const text = chatInput.value.trim(); if(!text) return;
+            const userDiv = document.createElement('div'); userDiv.className = "flex justify-end";
+            userDiv.innerHTML = `<div class="bg-brand-orange text-white p-3 rounded-2xl rounded-br-none text-sm shadow-sm">${text}</div>`;
+            chatMessages.appendChild(userDiv); chatInput.value = ''; chatMessages.scrollTop = chatMessages.scrollHeight;
+            setTimeout(() => {
+                const botDiv = document.createElement('div'); botDiv.className = "flex justify-start";
+                botDiv.innerHTML = `<div class="bg-white border border-gray-100 p-3 rounded-2xl rounded-br-none text-sm text-gray-700 shadow-sm">I'll check on that for you. For faster enrollment help, please call +61 2 9283 3583.</div>`;
+                chatMessages.appendChild(botDiv); chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 800);
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('revealed'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+
+        document.addEventListener('DOMContentLoaded', () => { initCarousel(); initMarquee(); renderTimeline(subjects, false); });
+    </script>
+</body>
+</html>
