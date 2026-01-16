@@ -57,6 +57,17 @@
         }
     </script>
     <style>
+        /* Global Font Consistency */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        
+        button, input, optgroup, select, textarea {
+            font-family: inherit;
+        }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
@@ -299,7 +310,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-brand-brownLight/20 font-sans text-brand-900 selection:bg-brand-orange selection:text-white overflow-x-hidden">
+<body class="min-h-screen bg-brand-brownLight/20 font-sans text-brand-900 selection:bg-brand-orange selection:text-white overflow-x-hidden antialiased">
 
     <!-- Video Modal -->
     <div id="video-modal" class="fixed inset-0 z-[110] hidden flex items-center justify-center bg-black/95 backdrop-blur-xl transition-opacity duration-500 opacity-0">
@@ -323,8 +334,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="nav-logo-icon" class="w-7 h-7 text-brand-900 transition-colors duration-300"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                 </div>
                 <div class="flex flex-col">
-                    <span id="nav-text-main" class="text-2xl font-serif font-bold tracking-tight leading-none text-brand-900 transition-colors duration-300">KOI</span>
-                    <span id="nav-text-sub" class="text-[10px] tracking-widest uppercase font-medium text-brand-900/60 transition-colors duration-300">King's Own Institute</span>
+                    <span id="nav-text-main" class="text-2xl font-serif font-bold tracking-tight leading-none text-brand-900 transition-colors duration-300">AIBM</span>
+                    <span id="nav-text-sub" class="text-[10px] tracking-widest uppercase font-medium text-brand-900/60 transition-colors duration-300">trading as King’s Own Institute (KOI)</span>
                 </div>
             </a>
 
@@ -332,7 +343,7 @@
                 <a href="https://koit1sms.t1cloud.com/" target="_blank" id="nav-portal" class="text-sm font-bold uppercase tracking-widest hover:text-brand-orange transition-all flex items-center gap-2 text-brand-900">
                     Portal <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 </a>
-                <a href="https://koi.edu.au/future-students/apply-online/" target="_blank" class="bg-brand-orange hover:bg-brand-900 text-white px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 shadow-xl hover:shadow-glow-orange hover:-translate-y-0.5">
+                <a href="https://koi.edu.au/future-students/apply-online/" target="_blank" class="bg-brand-orange hover:bg-brand-900 text-white px-8 py-3 rounded-none text-sm font-bold transition-all duration-300 shadow-xl hover:shadow-glow-orange hover:-translate-y-0.5">
                     Apply Now
                 </a>
             </div>
@@ -368,14 +379,6 @@
         <div class="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center">
             
             <div class="max-w-7xl w-full">
-                <!-- Institutional Identity -->
-                <div class="flex items-center gap-3 mb-8 opacity-0 animate-[fadeUp_1s_ease-out_forwards]">
-                    <div class="h-[1px] w-12 bg-brand-orange"></div>
-                    <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-brand-orange">
-                        CRICOS 03171A • PRV12012
-                    </span>
-                </div>
-
                 <!-- Academic Headline -->
                 <h1 class="text-5xl lg:text-7xl font-serif text-white leading-[1.1] mb-8 tracking-tight opacity-0 animate-[fadeUp_1s_ease-out_0.2s_forwards]">
                     <span class="font-sans font-bold text-white block text-3xl lg:text-4xl mb-4 tracking-wider uppercase">100% Online</span>
@@ -384,8 +387,8 @@
                 </h1>
 
                 <!-- Factual Description -->
-                <p class="text-lg text-gray-300 mb-10 max-w-xl leading-relaxed font-light pl-1 opacity-0 animate-[fadeUp_1s_ease-out_0.4s_forwards]">
-                    Accelerate your leadership trajectory with a TEQSA-accredited MBA designed for Australian professionals. 100% online, flexible, and outcome-focused.
+                <p class="text-lg text-gray-300 mb-10 max-w-2xl leading-relaxed font-light pl-1 opacity-0 animate-[fadeUp_1s_ease-out_0.4s_forwards]">
+                    King’s Own Institute (KOI) offers an affordable, future-focused Online MBA for professionals ready to lead with purpose and direction in a rapidly changing world. Designed to develop strategic, ethical and globally minded leaders, the KOI Online MBA supports your personal career progression - helping you clarify your career path, expand your leadership potential and create meaningful impact, while studying 100% online, on your terms.
                 </p>
 
                 <!-- CTAs -->
@@ -470,7 +473,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
                             </div>
                             <div>
-                                <p class="text-white font-bold text-sm uppercase tracking-wider mb-0.5">$4,717*</p>
+                                <p class="text-white font-bold text-sm uppercase tracking-wider mb-0.5">$1950</p>
                                 <p class="text-gray-300 text-[11px] font-medium">Fee Per Unit</p>
                             </div>
                         </div>
@@ -571,7 +574,7 @@
             </div>
             
             <div class="mt-20 text-center reveal-on-scroll">
-                <button onclick="openLeadForm()" class="group bg-brand-900 hover:bg-brand-orange text-white px-12 py-5 rounded-full font-bold shadow-xl transition-all duration-300 flex items-center gap-3 mx-auto">
+                <button onclick="openLeadForm()" class="group bg-brand-900 hover:bg-brand-orange text-white px-12 py-5 rounded-none font-bold shadow-xl transition-all duration-300 flex items-center gap-3 mx-auto">
                     Download MBA Brochure
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-y-1 transition-transform"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 </button>
@@ -1056,8 +1059,8 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-brand-sky"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-3xl font-serif font-bold tracking-tight leading-none text-white">KOI</span>
-                            <span class="text-[10px] tracking-widest uppercase font-bold text-brand-sky/80">King's Own Institute</span>
+                            <span class="text-3xl font-serif font-bold tracking-tight leading-none text-white">AIBM</span>
+                            <span class="text-[10px] tracking-widest uppercase font-bold text-brand-sky/80">trading as King’s Own Institute (KOI)</span>
                         </div>
                     </a>
                     <p class="text-gray-400 font-light leading-relaxed mb-8 pr-10 text-sm">
@@ -1669,7 +1672,7 @@
             nav.classList.toggle('py-6', !isScrolled);
             
             const sections = ['about', 'curriculum', 'accreditation', 'outcomes', 'entry-criteria', 'faq'];
-            const scrollPos = window.scrollY + 100;
+            const scrollPos = window.scrollY + 200;
             sections.forEach(id => {
                 const el = document.getElementById(id);
                 if (el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
